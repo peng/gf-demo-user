@@ -5,7 +5,10 @@
 package dao
 
 import (
+	"context"
+
 	"github.com/gogf/gf-demo-user/v2/internal/service/internal/dao/internal"
+	"github.com/gogf/gf/v2/database/gdb"
 )
 
 // userDao is the data access object for table user.
@@ -22,3 +25,11 @@ var (
 )
 
 // Fill with you ideas below.
+
+func Trans() (err error) {
+	var db gdb.DB
+	err = db.Transaction(context.TODO(), func(ctx context.Context, tx *gdb.TX) error {
+		return nil
+	})
+	return
+}
